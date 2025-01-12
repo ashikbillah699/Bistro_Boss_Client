@@ -3,10 +3,10 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home";
 import ContactUs from "../pages/ContactUs";
 import Deshboard from "../pages/Deshboard";
-import OurMenu from "../pages/OurMenu";
 import OurShop from "../pages/OurShop";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
+import OurMenu from "../pages/ourMenu/OurMenu";
 
 export const router = createBrowserRouter([
     {

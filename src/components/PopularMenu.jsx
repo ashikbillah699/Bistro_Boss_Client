@@ -1,20 +1,12 @@
-import { useEffect, useState } from "react";
 import MenuItems from "../sheard/MenuItems";
 import CommonHeader from "../sheard/CommonHeader";
+import useMenu from "../hooks/useMenu";
 
 
 const PopularMenu = () => {
-    const [popularMenu, setPopularMenu] = useState([]);
+    const [menu] = useMenu()
+    const popularMenu = menu.filter(item => item.category === 'popular');
 
-    useEffect(() => {
-        fetch(`menu.json`)
-            .then(res => res.json())
-            .then(data => {
-                const popularItems = data.filter(item => item.category === 'popular')
-                console.log(popularItems)
-                setPopularMenu(popularItems);
-            })
-    }, [])
     return (
         <div className="max-w-screen-lg mx-auto pb-10">
             <CommonHeader heading='FROM OUR MENU' subHeading='---Check it out---'></CommonHeader>

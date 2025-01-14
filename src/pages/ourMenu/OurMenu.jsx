@@ -7,6 +7,7 @@ import Dessert from "./Dessert";
 import Pizza from "./Pizza";
 import Salads from "./Salads";
 import Soups from "./Soups";
+import Drink from "./Drink";
 
 
 const OurMenu = () => {
@@ -40,6 +41,9 @@ const OurMenu = () => {
             </div>
             <div>
                 <Soups soup={menu}></Soups>
+            </div>
+            <div>
+                <Drink drinks ={menu}></Drink>
             </div>
         </div>
     );

@@ -2,8 +2,9 @@
 import BgCover from "../../sheard/BgCover";
 import saladImg from '../../assets/menu/soup-bg.jpg'
 import MenuItems from "../../sheard/MenuItems";
+import { Link } from "react-router-dom";
 
-const Soups = ({soup}) => {
+const Soups = ({ soup }) => {
     const soupData = soup.filter(dessert => dessert.category === 'soup')
     return (
         <div className="mt-10">
@@ -21,7 +22,15 @@ const Soups = ({soup}) => {
                     }
                 </div>
                 <div className="text-center">
-                    <button className='border-b-2 rounded-lg pb-2 px-4 border-black font-bold'>ORDER YOUR FAVOURITE FOOD</button>
+                    {
+                        soupData.length > 0 && (
+                            <Link to={`/ourShop/${soupData[0].category}`}> 
+                                <button className='border-b-2 rounded-lg pb-2 px-4 border-black font-bold'>
+                                    ORDER YOUR FAVOURITE FOOD
+                                </button>
+                            </Link>
+                        )
+                    }
                 </div>
             </div>
         </div>

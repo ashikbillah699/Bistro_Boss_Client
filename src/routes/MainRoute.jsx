@@ -3,10 +3,10 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home";
 import ContactUs from "../pages/ContactUs";
 import Deshboard from "../pages/Deshboard";
-import OurShop from "../pages/OurShop";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import OurMenu from "../pages/ourMenu/OurMenu";
+import OurShop from "../pages/ourShop/OurShop";
 
 export const router = createBrowserRouter([
     {
@@ -30,8 +30,8 @@ export const router = createBrowserRouter([
                 element: <OurMenu></OurMenu>
             },
             {
-                path: '/ourShop',
-                element: <OurShop></OurShop>
+                path: '/ourShop/:category',
+                element:<OurShop></OurShop> 
             },
             {
                 path: '/login',

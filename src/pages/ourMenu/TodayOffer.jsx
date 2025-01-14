@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 
+import { Link } from "react-router-dom";
 import CommonHeader from "../../sheard/CommonHeader";
 import MenuItems from "../../sheard/MenuItems";
 
@@ -15,7 +16,9 @@ const TodayOffer = ({ offered }) => {
                 }
             </div>
             <div className="text-center">
-                <button className='border-b-2 rounded-lg pb-2 px-4 border-black font-bold'>ORDER YOUR FAVOURITE FOOD</button>
+                <Link to='/ourShop/salad'>
+                    <button className='border-b-2 rounded-lg pb-2 px-4 border-black font-bold'>ORDER YOUR FAVOURITE FOOD</button>
+                </Link>
             </div>
         </div>
     );

@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 
 const MenuOrder = ({ items }) => {
-    console.log(items)
+    const count = items.length;
+    console.log(count)
     const { image, name, recipe,price } = items;
     return (
         <div

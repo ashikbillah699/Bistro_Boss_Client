@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const Dessert = ({ desserts }) => {
     const dessertsData = desserts.filter(dessert => dessert.category === 'dessert')
+    
     return (
         <div className="mt-10">
             <BgCover

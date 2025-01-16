@@ -38,6 +38,7 @@ const Login = () => {
             createLogin(email, password)
                 .then(result => {
                     console.log(result.user)
+                    console.log(result.user)
                     toast.success('successfully login')
                     e.target.reset()
                     navigate(from, { replace: true });
@@ -57,8 +58,13 @@ const Login = () => {
         try {
             googleSignUp()
                 .then(result => {
+                    console.log(result.user)
+                    console.log(result.user)
+                    console.log(result.user)
+                    console.log(result.user)
+                    console.log(result.user)
                     toast.success('successfully sign up')
-                    userProfile(result?.user?.displayName, result?.user?.photoURL)
+                    userProfile()
                     navigate(from, { replace: true });
                 })
                 .catch(err => {

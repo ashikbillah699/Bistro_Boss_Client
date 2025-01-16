@@ -2,11 +2,15 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
+import { FaCartShopping } from "react-icons/fa6";
+import useCart from "../hooks/useCart";
 
 
 const Navbar = () => {
     const { logOut, user } = useContext(AuthContext);
     console.log(user)
+    const [carts] = useCart()
+    console.log(carts)
 
     const handleLogOut = () => {
         try {
@@ -19,7 +23,7 @@ const Navbar = () => {
                     toast.error(err.message);
                 })
         }
-        catch(err){
+        catch (err) {
             console.log(err.message);
         }
     }
@@ -69,9 +73,13 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-
+                {/* cart badge */}
+                <button className="flex text-white text-lg">
+                    <div className="badge badge-warning"><FaCartShopping />+{carts.length}</div>
+                </button>
             </div>
             <div className="ml-3">
+
                 {
                     user && user ? <>
                         <Link onClick={handleLogOut} to='/login' className="text-white font-bold text-xl">LogOut</Link>

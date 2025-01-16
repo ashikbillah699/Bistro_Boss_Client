@@ -28,12 +28,12 @@ const AuthProvider = ({children}) => {
     }
 
     const userProfile = (displayName, photoURL) =>{
-        setLoading(true);
+        // setLoading(true);
         return updateProfile(auth.currentUser,{displayName, photoURL})
     }
 
     const googleSignUp = () =>{
-        setLoading(true);
+        // setLoading(true);
         return signInWithPopup(auth, googleProvider)
     }
 

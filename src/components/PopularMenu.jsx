@@ -1,6 +1,7 @@
 import MenuItems from "../sheard/MenuItems";
 import CommonHeader from "../sheard/CommonHeader";
 import useMenu from "../hooks/useMenu";
+import { Link } from "react-router-dom";
 
 
 const PopularMenu = () => {
@@ -16,7 +17,7 @@ const PopularMenu = () => {
                 }
             </div>
             <div className="text-center">
-            <button className='border-b-2 rounded-lg pb-2 px-4 border-black font-bold'>View All Menu</button>
+            <Link to={'/ourMenu'} className='border-b-2 rounded-lg pb-2 px-4 border-black font-bold'>View All Menu</Link>
             </div>
         </div>
     );

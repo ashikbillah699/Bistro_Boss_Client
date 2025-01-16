@@ -7,6 +7,7 @@ import SignUp from "../pages/SignUp";
 import OurMenu from "../pages/ourMenu/OurMenu";
 import OurShop from "../pages/ourShop/OurShop";
 import ContactUs from "../pages/contactUs/ContactUs";
+import PrivetRoute from "./PrivetRoute";
 
 export const router = createBrowserRouter([
     {
@@ -14,7 +15,7 @@ export const router = createBrowserRouter([
         element: <MainLayout></MainLayout>,
         children: [
             {
-                path:'/',
+                path: '/',
                 element: <Home></Home>
             },
             {
@@ -23,7 +24,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/deshboard',
-                element: <Deshboard></Deshboard>
+                element: <PrivetRoute><Deshboard></Deshboard></PrivetRoute>
             },
             {
                 path: '/ourMenu',
@@ -31,16 +32,17 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/ourShop/:category',
-                element:<OurShop></OurShop> 
+                element: <OurShop></OurShop>
             },
-            {
-                path: '/login',
-                element: <Login></Login>
-            },
-            {
-                path: '/signUp',
-                element: <SignUp></SignUp>
-            }
+
         ]
+    },
+    {
+        path: '/login',
+        element: <Login></Login>
+    },
+    {
+        path: '/signUp',
+        element: <SignUp></SignUp>
     }
 ])

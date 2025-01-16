@@ -1,22 +1,36 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
+import toast from "react-hot-toast";
 
 
 const Navbar = () => {
+    const { logOut, user } = useContext(AuthContext);
+    console.log(user)
+
+    const handleLogOut = () => {
+        try {
+            logOut()
+                .then(() => {
+                    console.log('logout')
+                    toast.success('Successfully logout');
+                })
+                .catch(err => {
+                    toast.error(err.message);
+                })
+        }
+        catch(err){
+            console.log(err.message);
+        }
+    }
+
+
     const links = <>
         <NavLink to='/' className="mx-3 text-white text-lg font-extrabold">Home</NavLink>
         <NavLink to='/contactUs' className="mx-3 text-white text-lg font-extrabold">Contact Us</NavLink>
         <NavLink to='/deshboard' className="mx-3 text-white text-lg font-extrabold">Deshboard</NavLink>
         <NavLink to='/ourMenu' className="mx-3 text-white text-lg font-extrabold">Our_Menu</NavLink>
         <NavLink to='/ourShop/salad' className="mx-3 text-white text-lg font-extrabold">Our_Shop</NavLink>
-        {/* <li className="text-white text-xl font-extrabold">
-            <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                    <li><a>Submenu 1</a></li>
-                    <li><a>Submenu 2</a></li>
-                </ul>
-            </details>
-        </li > */}
     </>
 
     return (
@@ -55,7 +69,24 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn">Button</a>
+
+            </div>
+            <div className="ml-3">
+                {
+                    user && user ? <>
+                        <Link onClick={handleLogOut} to='/login' className="text-white font-bold text-xl">LogOut</Link>
+                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img
+                                    alt="Tailwind CSS Navbar component"
+                                    src={user && user?.photoURL}
+                                />
+                            </div>
+                        </div>
+                    </>
+                        :
+                        <Link to='/login' className="text-white font-bold text-xl">Login</Link>
+                }
 
             </div>
         </div>

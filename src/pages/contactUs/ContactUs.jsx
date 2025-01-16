@@ -11,7 +11,7 @@ const ContactUs = () => {
     return (
         <div>
             <Helmet>
-                <title>Bistro | Our Shop</title>
+                <title>Bistro | Contact Us</title>
             </Helmet>
             <BgCover
                 img={contactImg}
@@ -63,7 +63,7 @@ const ContactUs = () => {
             <div>
                 <CommonHeader subHeading={'---Send Us a Message---'} heading={'CONTACT FORM'}></CommonHeader>
                 <div className="p-6  flex justify-center items-center min-h-screen">
-                    <div className="bg-gray-100 shadow-lg rounded-lg p-8 w-full max-w-4xl">
+                    <div className="bg-gray-100 rounded-lg p-8 w-full max-w-4xl">
                         <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* Name Field */}
                             <div className="md:col-span-1">
@@ -113,7 +113,7 @@ const ContactUs = () => {
                             </div>
 
                             {/* Captcha Section */}
-                            <div className="md:col-span-2 flex bg-white items-center gap-8 w-4/12 py-2 rounded-md pl-3">
+                            <div className="md:col-span-2 sm:justify-between flex bg-white items-center gap-8 md:w-4/12 py-2 rounded-md pl-3">
                                 <div className="flex items-center gap-4">
                                     <input
                                         type="checkbox"

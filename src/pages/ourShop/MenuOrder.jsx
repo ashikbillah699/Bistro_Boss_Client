@@ -6,6 +6,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useCart from "../../hooks/useCart";
 
 
 
@@ -15,6 +16,8 @@ const MenuOrder = ({ items }) => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    
+    const [, refetch] = useCart()
 
     const { image, name, recipe, price, _id } = items;
 
@@ -40,6 +43,7 @@ const MenuOrder = ({ items }) => {
                             showConfirmButton: false,
                             timer: 2000
                           });
+                          refetch();
                     }
                 })
             }

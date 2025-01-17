@@ -74,9 +74,9 @@ const Navbar = () => {
                     </ul>
                 </div>
                 {/* cart badge */}
-                <button className="flex text-white text-lg">
+                <Link to='/deshboard/myCart' className="flex text-white text-lg">
                     <div className="badge badge-warning"><FaCartShopping />+{carts.length}</div>
-                </button>
+                </Link>
             </div>
             <div className="ml-3">
 

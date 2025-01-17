@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 
-
 const MenuItems = ({ item }) => {
     // console.log(item)
-    const {name,recipe,image,price} = item
+    const {name,recipe,image,price} = item;
 
     return (
         <div className="flex gap-4 items-center">

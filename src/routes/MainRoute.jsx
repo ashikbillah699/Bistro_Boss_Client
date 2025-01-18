@@ -8,7 +8,8 @@ import OurShop from "../pages/ourShop/OurShop";
 import ContactUs from "../pages/contactUs/ContactUs";
 import PrivetRoute from "./PrivetRoute";
 import DeshboardLayout from "../layouts/DeshboardLayout";
-import MyCart from "../pages/deshboard/MyCart";
+import AllUsers from "../pages/deshboard/adminDeshboard/AllUsers";
+import MyCart from "../pages/deshboard/userDeshboard/MyCart";
 
 export const router = createBrowserRouter([
     {
@@ -46,6 +47,12 @@ export const router = createBrowserRouter([
         path: '/deshboard',
         element: <PrivetRoute><DeshboardLayout></DeshboardLayout></PrivetRoute>,
         children:[
+            // addmin routes
+            {
+                path:'/deshboard/allUsers',
+                element: <AllUsers></AllUsers>
+            },
+            // user routes
             {
                 path: '/deshboard/myCart',
                 element: <MyCart></MyCart>

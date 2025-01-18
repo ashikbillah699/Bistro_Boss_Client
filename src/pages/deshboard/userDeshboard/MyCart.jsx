@@ -1,8 +1,8 @@
 import { FaTrash } from 'react-icons/fa';
-import CommonHeader from '../../sheard/CommonHeader';
-import useCart from '../../hooks/useCart';
+import useCart from '../../../hooks/useCart';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
+import CommonHeader from '../../../sheard/CommonHeader';
 
 const MyCart = () => {
     const [cart, refetch] = useCart();
@@ -24,12 +24,12 @@ const MyCart = () => {
                 await axiosSecure.delete(`/cart/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
+                            refetch()
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
-                            refetch()
                         }
                     })
             }

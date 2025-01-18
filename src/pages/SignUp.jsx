@@ -6,23 +6,32 @@ import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const SignUp = () => {
-    const { createSignUp, userProfile, googleSignUp,facebookSignUp } = useContext(AuthContext)
+    const { createSignUp, userProfile, googleSignUp, facebookSignUp } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors }, reset } = useForm()
     const navigate = useNavigate()
+    const axiosPublic = useAxiosPublic()
 
     const onSubmit = (data) => {
-        console.log(data)
         try {
             createSignUp(data.email, data.password)
-                .then(result => {
+                .then(async (result) => {
                     console.log(result.user)
-                    // console.log(result.user)
-                    toast.success('successfully sign up')
-                    userProfile( data?.displayName, data?.photoURL)
-                    reset()
-                    navigate('/')
+                    const userInfo = {
+                        userName: data?.displayName,
+                        userEmail: data?.email
+                    }
+                    console.log(userInfo)
+                    const res = await axiosPublic.post('/user', userInfo)
+                    if (res.data.insertedId) {
+                        toast.success('successfully sign up')
+                        userProfile(data?.displayName, data?.photoURL)
+                        reset()
+                        navigate('/')
+                    }
+
                 })
                 .catch(err => {
                     console.log(err.message)
@@ -34,12 +43,19 @@ const SignUp = () => {
         }
     }
 
-    const handleGoogle = () =>{
+    const handleGoogle = () => {
         try {
             googleSignUp()
-                .then(result => {
+                .then(async (result) => {
                     // console.log(result.user)
                     console.log(result.user)
+                    const userInfo = {
+                        userName: result.user.displayName,
+                        userEmail:result.user.email
+                    }
+                    console.log(userInfo)
+                    const res = await axiosPublic.post('/user', userInfo)
+                    console.log(res.data)
                     toast.success('successfully sign up')
                     userProfile()
                     navigate('/')

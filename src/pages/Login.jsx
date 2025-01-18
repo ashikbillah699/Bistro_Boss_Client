@@ -6,6 +6,7 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-s
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 
 const Login = () => {
@@ -14,6 +15,7 @@ const Login = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -54,18 +56,21 @@ const Login = () => {
     }
 
 
-    const handleGoogle = () =>{
+    const handleGoogle = () => {
         try {
             googleSignUp()
-                .then(result => {
+                .then(async (result) => {
                     console.log(result.user)
-                    console.log(result.user)
-                    console.log(result.user)
-                    console.log(result.user)
-                    console.log(result.user)
+                    const userInfo = {
+                        userName: result.user.displayName,
+                        userEmail:result.user.email
+                    }
+                    console.log(userInfo)
+                    const res = await axiosPublic.post('/user', userInfo)
+                    console.log(res.data)
                     toast.success('successfully sign up')
                     userProfile()
-                    navigate(from, { replace: true });
+                    navigate('/')
                 })
                 .catch(err => {
                     console.log(err.message)

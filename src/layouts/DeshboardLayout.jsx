@@ -5,10 +5,11 @@ import { IoHomeSharp } from "react-icons/io5";
 import { MdOutlineHomeWork } from "react-icons/md";
 import { RiAlignItemLeftFill, RiMenuAddLine } from "react-icons/ri";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
 
 const DeshboardLayout = () => {
     // Todo
-    const isAdmin = true
+    const [isAdmin] = useAdmin()
     return (
         <div>
             <div className="flex flex-col md:flex-row min-h-screen">

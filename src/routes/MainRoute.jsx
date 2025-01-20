@@ -10,6 +10,10 @@ import PrivetRoute from "./PrivetRoute";
 import DeshboardLayout from "../layouts/DeshboardLayout";
 import AllUsers from "../pages/deshboard/adminDeshboard/AllUsers";
 import MyCart from "../pages/deshboard/userDeshboard/MyCart";
+import AdminRoute from "./AdminRoute";
+import AddItems from "../pages/deshboard/adminDeshboard/AddItems";
+import ManageItems from "../pages/deshboard/adminDeshboard/ManageItems";
+import UpdateMenuItem from "../pages/deshboard/adminDeshboard/UpdateMenuItem";
 
 export const router = createBrowserRouter([
     {
@@ -50,7 +54,19 @@ export const router = createBrowserRouter([
             // addmin routes
             {
                 path:'/deshboard/allUsers',
-                element: <AllUsers></AllUsers>
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+            },
+            {
+                path: '/deshboard/addItems',
+                element: <AdminRoute><AddItems></AddItems></AdminRoute>
+            },
+            {
+                path: '/deshboard/manageItems',
+                element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
+            },
+            {
+                path: '/deshboard/update/:id',
+                element: <AdminRoute><UpdateMenuItem></UpdateMenuItem></AdminRoute>
             },
             // user routes
             {

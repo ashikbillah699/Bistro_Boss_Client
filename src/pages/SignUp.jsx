@@ -19,6 +19,7 @@ const SignUp = () => {
             createSignUp(data.email, data.password)
                 .then(async (result) => {
                     console.log(result.user)
+                    userProfile(data?.displayName, data?.photoURL)
                     const userInfo = {
                         userName: data?.displayName,
                         userEmail: data?.email
@@ -27,7 +28,6 @@ const SignUp = () => {
                     const res = await axiosPublic.post('/user', userInfo)
                     if (res.data.insertedId) {
                         toast.success('successfully sign up')
-                        userProfile(data?.displayName, data?.photoURL)
                         reset()
                         navigate('/')
                     }
@@ -57,7 +57,7 @@ const SignUp = () => {
                     const res = await axiosPublic.post('/user', userInfo)
                     console.log(res.data)
                     toast.success('successfully sign up')
-                    userProfile()
+                    userProfile(result.user.displayName, result.user.photoURL)
                     navigate('/')
                 })
                 .catch(err => {

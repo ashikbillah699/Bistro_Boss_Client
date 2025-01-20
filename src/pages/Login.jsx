@@ -61,15 +61,16 @@ const Login = () => {
             googleSignUp()
                 .then(async (result) => {
                     console.log(result.user)
+                    userProfile(result.user.displayName, result.user.photoURL)
+                    console.log(result.user.displayName, result.user.photoURL)
                     const userInfo = {
                         userName: result.user.displayName,
                         userEmail:result.user.email
                     }
-                    console.log(userInfo)
+                    // console.log(userInfo)
                     const res = await axiosPublic.post('/user', userInfo)
                     console.log(res.data)
                     toast.success('successfully sign up')
-                    userProfile()
                     navigate('/')
                 })
                 .catch(err => {

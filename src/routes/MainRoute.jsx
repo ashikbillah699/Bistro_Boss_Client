@@ -14,6 +14,7 @@ import AdminRoute from "./AdminRoute";
 import AddItems from "../pages/deshboard/adminDeshboard/AddItems";
 import ManageItems from "../pages/deshboard/adminDeshboard/ManageItems";
 import UpdateMenuItem from "../pages/deshboard/adminDeshboard/UpdateMenuItem";
+import Payment from "../pages/deshboard/userDeshboard/Payment";
 
 export const router = createBrowserRouter([
     {
@@ -72,6 +73,10 @@ export const router = createBrowserRouter([
             {
                 path: '/deshboard/myCart',
                 element: <MyCart></MyCart>
+            }, 
+            {
+                path: '/deshboard/payment',
+                element: <Payment></Payment>
             }
         ]
     }

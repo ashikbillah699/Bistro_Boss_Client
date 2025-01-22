@@ -30,7 +30,7 @@ const ManageItems = () => {
                             refetch()
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                text: "Your menu item  has been deleted.",
                                 icon: "success"
                             });
                         }

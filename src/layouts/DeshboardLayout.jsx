@@ -1,9 +1,9 @@
 import { FaShoppingBag } from "react-icons/fa";
-import { FaBook, FaCartShopping, FaRegAddressBook, FaUsers } from "react-icons/fa6";
+import { FaBook, FaBookOpenReader, FaCartShopping, FaRegAddressBook, FaUsers } from "react-icons/fa6";
 import { GrContact } from "react-icons/gr";
 import { IoHomeSharp } from "react-icons/io5";
-import { MdOutlineHomeWork } from "react-icons/md";
-import { RiAlignItemLeftFill, RiMenuAddLine } from "react-icons/ri";
+import { MdOutlineHomeWork, MdRateReview, MdWorkHistory } from "react-icons/md";
+import { RiAlignItemLeftFill, RiMenuAddLine, RiReservedFill } from "react-icons/ri";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 
@@ -28,12 +28,12 @@ const DeshboardLayout = () => {
                             <li><NavLink to='/deshboard/allUsers' href="#all-users" className="hover:text-white duration-300 font-bold flex items-center gap-3"><FaUsers />All Users</NavLink></li>
                         </>
                             : <>
-                                <li><NavLink to='/deshboard/userHome' href="#admin-home" className="hover:text-white duration-300 font-bold">User Home</NavLink></li>
-                                <li><NavLink to='/deshboard/reservation' href="#add-items" className="hover:text-white duration-300 font-bold">Reservation</NavLink></li>
-                                <li><NavLink to='/deshboard/paymentHistory' href="#add-items" className="hover:text-white duration-300 font-bold">Payment Hisory</NavLink></li>
+                                <li><NavLink to='/deshboard/userHome' href="#admin-home" className="hover:text-white duration-300 font-bold flex items-center gap-3"><IoHomeSharp />User Home</NavLink></li>
+                                <li><NavLink to='/deshboard/reservation' href="#add-items" className="hover:text-white duration-300 font-bold flex items-center gap-3"><RiReservedFill />Reservation</NavLink></li>
+                                <li><NavLink to='/deshboard/paymentHistory' href="#add-items" className="hover:text-white duration-300 font-bold flex items-center gap-3"><MdWorkHistory />Payment Hisory</NavLink></li>
                                 <li> <NavLink to='/deshboard/myCart' href="#manage-items" className="hover:text-white duration-300 flex font-bold items-center gap-3"><FaCartShopping />My Cart</NavLink></li>
-                                <li><NavLink to='/deshboard/addReview' href="#manage-bookings" className="hover:text-white duration-300 font-bold">Add Review</NavLink></li>
-                                <li><NavLink to='/deshboard/myBooking' href="#all-users" className="hover:text-white duration-300 font-bold">My Booking</NavLink></li>
+                                <li><NavLink to='/deshboard/addReview' href="#manage-bookings" className="hover:text-white duration-300 font-bold flex items-center gap-3"><MdRateReview />Add Review</NavLink></li>
+                                <li><NavLink to='/deshboard/myBooking' href="#all-users" className="hover:text-white duration-300 font-bold flex items-center gap-3"><FaBookOpenReader />My Booking</NavLink></li>
 
                             </>
                         }

@@ -3,6 +3,7 @@ import useCart from '../../../hooks/useCart';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import CommonHeader from '../../../sheard/CommonHeader';
+import { Link } from 'react-router-dom';
 
 const MyCart = () => {
     const [cart, refetch] = useCart();
@@ -44,7 +45,9 @@ const MyCart = () => {
                 <div className='flex justify-between items-center my-6'>
                     <h2 className="text-xl font-bold text-black">Total orders: {cart.length}</h2>
                     <h2 className="text-xl font-bold text-black">Total price: ${totalprice}</h2>
-                    <button className='text-white bg-[#D1A054] px-2 py-1 rounded-md'>pay</button>
+                    {cart.length ? <Link to='/deshboard/payment'><button className='text-white bg-[#D1A054] px-2 py-1 rounded-md'>pay</button></Link>
+                    : <button disabled className='text-white bg-[#d3d0ce] px-2 py-1 rounded-md'>pay</button>}
+                    
                 </div>
                 <table className="table-auto w-full  shadow-md rounded-lg">
                     <thead>

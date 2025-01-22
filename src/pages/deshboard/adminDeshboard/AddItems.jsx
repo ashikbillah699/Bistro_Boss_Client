@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const imgagHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -13,6 +14,7 @@ const AddItems = () => {
     const { register, handleSubmit } = useForm();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate();
 
     const onSubmit = async(data) => {
         const imgFile = {image: data.image[0]};
@@ -34,6 +36,7 @@ const AddItems = () => {
             const menuRes = await axiosSecure.post('/menu', menuData);
             console.log(menuRes);
             if(menuRes.data.insertedId){
+                navigate('/deshboard/manageItems')
                 Swal.fire({
                     position: "center",
                     icon: "success",
@@ -41,6 +44,7 @@ const AddItems = () => {
                     showConfirmButton: false,
                     timer: 1500
                   });
+
             }
         }
         console.log(data)

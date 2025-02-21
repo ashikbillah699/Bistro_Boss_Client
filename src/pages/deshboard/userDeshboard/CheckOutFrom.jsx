@@ -1,10 +1,15 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const CheckOutFrom = () => {
     const stripe = useStripe();
     const elements = useElements();
     const [error, setError] = useState();
+    const navigate = useNavigate();
+    const axiosSecure = useAxiosSecure();
 
     const handleSubmit = async(event) =>{
         event.preventDefault();
@@ -29,6 +34,26 @@ const CheckOutFrom = () => {
         }
         else{
             console.log('[paymentMethod]', paymentMethod);
+            toast.success('Payment successfully!!🍔')
+
+            // save payment history
+            try{
+                const {data} = await axiosSecure.post('/payment', paymentMethod)
+                console.log(data);
+            }
+            catch(err){
+                console.log(err.message);
+            }
+
+            // delete all Order
+            try{
+                await axiosSecure.delete('/cart')
+                // console.log(data);
+            }
+            catch(err){
+                console.log(err.message);
+            }
+            navigate('/deshboard/paymentHistory')
             setError('')
         }
 

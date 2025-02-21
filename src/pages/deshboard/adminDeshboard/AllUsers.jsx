@@ -94,8 +94,8 @@ const AllUsers = () => {
                             {users.map((user, index) => (
                                 <tr key={user.id} className="text-center border-b">
                                     <td className="p-4">{index + 1}</td>
-                                    <td className="p-4">{user.userName}</td>
-                                    <td className="p-4">{user.userEmal}</td>
+                                    <td className="p-4">{user?.userName}</td>
+                                    <td className="p-4" style={{ fontFamily: 'Open Sans' }}>{user?.userEmail}</td>
                                     <td className="p-4">
                                         {
                                             user.role == 'admin' ? <h2 className="text-xl font-bold">Admin</h2>

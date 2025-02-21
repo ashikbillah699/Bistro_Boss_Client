@@ -29,9 +29,9 @@ const DeshboardLayout = () => {
                         </>
                             : <>
                                 <li><NavLink to='/deshboard/userHome' href="#admin-home" className="hover:text-white duration-300 font-bold flex items-center gap-3"><IoHomeSharp />User Home</NavLink></li>
-                                <li><NavLink to='/deshboard/reservation' href="#add-items" className="hover:text-white duration-300 font-bold flex items-center gap-3"><RiReservedFill />Reservation</NavLink></li>
-                                <li><NavLink to='/deshboard/paymentHistory' href="#add-items" className="hover:text-white duration-300 font-bold flex items-center gap-3"><MdWorkHistory />Payment Hisory</NavLink></li>
                                 <li> <NavLink to='/deshboard/myCart' href="#manage-items" className="hover:text-white duration-300 flex font-bold items-center gap-3"><FaCartShopping />My Cart</NavLink></li>
+                                <li><NavLink to='/deshboard/payment' href="#add-items" className="hover:text-white duration-300 font-bold flex items-center gap-3"><RiReservedFill />Payment</NavLink></li>
+                                <li><NavLink to='/deshboard/paymentHistory' href="#add-items" className="hover:text-white duration-300 font-bold flex items-center gap-3"><MdWorkHistory />Payment Hisory</NavLink></li>
                                 <li><NavLink to='/deshboard/addReview' href="#manage-bookings" className="hover:text-white duration-300 font-bold flex items-center gap-3"><MdRateReview />Add Review</NavLink></li>
                                 <li><NavLink to='/deshboard/myBooking' href="#all-users" className="hover:text-white duration-300 font-bold flex items-center gap-3"><FaBookOpenReader />My Booking</NavLink></li>
 

@@ -15,6 +15,7 @@ import AddItems from "../pages/deshboard/adminDeshboard/AddItems";
 import ManageItems from "../pages/deshboard/adminDeshboard/ManageItems";
 import UpdateMenuItem from "../pages/deshboard/adminDeshboard/UpdateMenuItem";
 import Payment from "../pages/deshboard/userDeshboard/Payment";
+import PaymentHistory from "../pages/deshboard/userDeshboard/PaymentHistory";
 
 export const router = createBrowserRouter([
     {
@@ -77,6 +78,10 @@ export const router = createBrowserRouter([
             {
                 path: '/deshboard/payment',
                 element: <Payment></Payment>
+            }, 
+            {
+                path: '/deshboard/paymentHistory',
+                element: <PaymentHistory></PaymentHistory>
             }
         ]
     }

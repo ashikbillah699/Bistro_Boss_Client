@@ -46,8 +46,8 @@ const MyCart = () => {
                     <h2 className="text-xl font-bold text-black">Total orders: {cart.length}</h2>
                     <h2 className="text-xl font-bold text-black">Total price: ${totalprice}</h2>
                     {cart.length ? <Link to='/deshboard/payment'><button className='text-white bg-[#D1A054] px-2 py-1 rounded-md'>pay</button></Link>
-                    : <button disabled className='text-white bg-[#d3d0ce] px-2 py-1 rounded-md'>pay</button>}
-                    
+                        : <button disabled className='text-white bg-[#d3d0ce] px-2 py-1 rounded-md'>pay</button>}
+
                 </div>
                 <table className="table-auto w-full  shadow-md rounded-lg">
                     <thead>
@@ -59,21 +59,24 @@ const MyCart = () => {
                             <th className="p-4">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {cart.map((item, index) => (
-                            <tr key={item.id} className="text-center border-b">
-                                <td className="p-4">{index + 1}</td>
-                                <td className="p-4"><img src={item.image} className='mx-auto bg-gray-500 h-14 w-14 rounded-lg' alt="" /></td>
-                                <td className="p-4">{item.name}</td>
-                                <td className="p-4">{item.price}</td>
-                                <td className="p-4">
-                                    <button onClick={() => handleDelete(item._id)} className="bg-red-700 text-white p-2 rounded hover:bg-red-900 duration-300">
-                                        <FaTrash />
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
+                    {
+                        cart.length === 0 ? <tr className='text-center'><td className='text-3xl font-semibold py-3' colSpan='5'>You have no order!!!</td></tr>
+                            : <tbody>
+                                {cart.map((item, index) => (
+                                    <tr key={item.id} className="text-center border-b">
+                                        <td className="p-4">{index + 1}</td>
+                                        <td className="p-4"><img src={item.image} className='mx-auto bg-gray-500 h-14 w-14 rounded-lg' alt="" /></td>
+                                        <td className="p-4">{item.name}</td>
+                                        <td className="p-4">{item.price}</td>
+                                        <td className="p-4">
+                                            <button onClick={() => handleDelete(item._id)} className="bg-red-700 text-white p-2 rounded hover:bg-red-900 duration-300">
+                                                <FaTrash />
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                    }
                 </table>
             </div>
         </div>

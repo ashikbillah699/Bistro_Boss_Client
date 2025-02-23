@@ -1,8 +1,10 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { AuthContext } from '../../../provider/AuthProvider';
+import useCart from '../../../hooks/useCart';
 
 const CheckOutFrom = () => {
     const stripe = useStripe();
@@ -10,47 +12,63 @@ const CheckOutFrom = () => {
     const [error, setError] = useState();
     const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();
+    const { user } = useContext(AuthContext);
+    const [cart] = useCart();
 
-    const handleSubmit = async(event) =>{
+
+    console.log(cart)
+
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
-        if(!stripe || !elements){
-            return 
+        if (!stripe || !elements) {
+            return
         }
 
         const card = elements.getElement(CardElement)
-        if(card === null){
+        if (card === null) {
             return;
         }
 
-        const {error, paymentMethod} = await stripe.createPaymentMethod({
+        const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
             card
         })
 
-        if(error) {
+        if (error) {
             console.log('[error]', error);
             setError(error.message)
         }
-        else{
+        else {
             console.log('[paymentMethod]', paymentMethod);
             toast.success('Payment successfully!!🍔')
 
+            const historyData = {
+                transactionId: paymentMethod.id,
+                email: user?.email,
+                totalprice: cart.reduce((total, item) => total + item.price, 0),
+                paymentDate: new Date(),
+                cartIds: cart.map(item => item._id),
+                menuItemIds: cart.map(item => item.menuId),
+                status: 'pending'
+            }
+
             // save payment history
-            try{
-                const {data} = await axiosSecure.post('/payment', paymentMethod)
+            try {
+                const { data } = await axiosSecure.post('/payment', historyData)
                 console.log(data);
             }
-            catch(err){
+            catch (err) {
                 console.log(err.message);
             }
 
             // delete all Order
-            try{
+            try {
                 await axiosSecure.delete('/cart')
                 // console.log(data);
             }
-            catch(err){
+            catch (err) {
                 console.log(err.message);
             }
             navigate('/deshboard/paymentHistory')

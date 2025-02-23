@@ -32,9 +32,9 @@ const Navbar = () => {
     const links = <>
         <NavLink to='/' className="mx-3 text-white text-lg font-extrabold">Home</NavLink>
         <NavLink to='/contactUs' className="mx-3 text-white text-lg font-extrabold">Contact Us</NavLink>
-        <NavLink to='/deshboard' className="mx-3 text-white text-lg font-extrabold">Deshboard</NavLink>
         <NavLink to='/ourMenu' className="mx-3 text-white text-lg font-extrabold">Our_Menu</NavLink>
         <NavLink to='/ourShop/salad' className="mx-3 text-white text-lg font-extrabold">Our_Shop</NavLink>
+        <NavLink to='/deshboard' className="mx-3 text-white text-lg font-extrabold">Deshboard</NavLink>
     </>
 
     return (

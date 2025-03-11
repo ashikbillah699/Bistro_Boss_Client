@@ -5,7 +5,7 @@ Bistro Boss is an online restaurant management system designed to streamline res
 ## **Live Link**
 - [Bistro Boss Live](https://bistro-boss-12069.web.app/)
   
-## **Admin Login (For Local Development)**
+## **Admin Login (For Check)**
 - **Email**: rafi@gmail.com
 - **Password**: Rrrrrr1
 
